@@ -33,8 +33,8 @@ builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
 // ── Services ──
 
 builder.Services.AddScoped<ITeamRepository, TeamRepository>();    
-builder.Services.AddScoped<IPlayerRepository, PlayerRepository>(); 
-
+builder.Services.AddScoped<IPlayerService, PlayerService>();
+builder.Services.AddScoped<ITeamService, TeamService>();
 
 // ── AutoMapper ──
 
