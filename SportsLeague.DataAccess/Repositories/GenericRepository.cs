@@ -10,7 +10,7 @@ using SportsLeague.Domain.Interfaces.Repositories;
 namespace SportsLeague.DataAccess.Repositories;
 
 
-public class GenericRepository<T> : IGenericRepository<T> where T : AuditBase
+public class GenericRepository<T> : Domain.Interfaces.Repositories.IGenericRepository<T> where T : AuditBase
 
 {
 

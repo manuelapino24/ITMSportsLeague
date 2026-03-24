@@ -10,7 +10,7 @@ using SportsLeague.Domain.Interfaces.Repositories;
 namespace SportsLeague.DataAccess.Repositories;
 
 
-public class TeamRepository : GenericRepository<Team>, ITeamRepository
+public class TeamRepository : GenericRepository<Team>, Domain.Interfaces.Repositories.ITeamRepository
 
 {
 

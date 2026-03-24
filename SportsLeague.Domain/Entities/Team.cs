@@ -1,18 +1,21 @@
-﻿namespace SportsLeague.Domain.Entities;
+﻿using System;
+using System.Collections.Generic;
 
-
-public class Team : AuditBase
-
+namespace SportsLeague.Domain.Entities
 {
+    public class Team : AuditBase
+    {
+        public string Name { get; set; } = string.Empty;
 
-    public string Name { get; set; } = string.Empty;
+        public string City { get; set; } = string.Empty;
 
-    public string City { get; set; } = string.Empty;
+        public string Stadium { get; set; } = string.Empty;
 
-    public string Stadium { get; set; } = string.Empty;
+        public string? LogoUrl { get; set; }
 
-    public string? LogoUrl { get; set; }
+        public DateTime FoundedDate { get; set; }
 
-    public DateTime FoundedDate { get; set; }
-
+        // Corregido: Players ahora es una colección tipada compatible con EF Core
+        public ICollection<Player> Players { get; set; } = new List<Player>();
+    }
 }
