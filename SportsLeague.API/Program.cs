@@ -14,7 +14,7 @@ using SportsLeague.Domain.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 
-// ── Entity Framework Core ──
+// ── Entity Framework Core ──------------------------------------------------------------
 
 builder.Services.AddDbContext<LeagueDbContext>(options =>
 
