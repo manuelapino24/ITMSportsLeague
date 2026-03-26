@@ -18,6 +18,8 @@ public class Tournament : AuditBase
 
     public TournamentStatus Status { get; set; } = TournamentStatus.Pending;
 
+    public ICollection<TournamentSponsor> TournamentSponsors { get; set; } = new List<TournamentSponsor>();    // 
+
 
     // Navigation Properties
 
