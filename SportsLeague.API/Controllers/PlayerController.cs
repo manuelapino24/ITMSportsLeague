@@ -9,7 +9,7 @@ using SportsLeague.API.DTOs.Response;
 using SportsLeague.Domain.Entities;
 
 using SportsLeague.Domain.Interfaces.Services;
-77poajaksunhdaushdlSUHD,kjASDjjjj.
+
 
 namespace SportsLeague.API.Controllers;
 
