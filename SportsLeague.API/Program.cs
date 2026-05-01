@@ -10,6 +10,9 @@ using SportsLeague.Domain.Interfaces.Services;
 
 using SportsLeague.Domain.Services;
 
+using SportsLeague.Domain.Helpers;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +34,10 @@ builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
 builder.Services.AddScoped<IRefereeRepository, RefereeRepository>();
 builder.Services.AddScoped<ITournamentRepository, TournamentRepository>();
 builder.Services.AddScoped<ITournamentTeamRepository, TournamentTeamRepository>();
-
+builder.Services.AddScoped<IMatchResultRepository, MatchResultRepository>();
+builder.Services.AddScoped<IGoalRepository, GoalRepository>();
+builder.Services.AddScoped<ICardRepository, CardRepository>();
+builder.Services.AddScoped<IMatchRepository, MatchRepository>();
 
 // ── Services ──
 
@@ -40,6 +46,8 @@ builder.Services.AddScoped<IPlayerService, PlayerService>();
 builder.Services.AddScoped<ITeamService, TeamService>();
 builder.Services.AddScoped<IRefereeService, RefereeService>();
 builder.Services.AddScoped<ITournamentService, TournamentService>();
+builder.Services.AddScoped<IMatchEventService, MatchEventService>();
+builder.Services.AddScoped<MatchValidationHelper>();
 
 // Sponsor
 builder.Services.AddScoped<ISponsorRepository, SponsorRepository>();
@@ -89,5 +97,16 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+if (app.Environment.IsDevelopment())
+{
+    Task.Delay(2000).ContinueWith(_ =>
+    {
+        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+        {
+            FileName = "http://localhost:5163/swagger",
+            UseShellExecute = true
+        });
+    });
+}
 
 app.Run();
