@@ -444,6 +444,36 @@ public class LeagueDbContext : DbContext
 
             });
 
+            // ── Match Configuration ──
+            modelBuilder.Entity<Match>(entity =>
+            {
+                entity.HasKey(m => m.Id);
+                entity.Property(m => m.MatchDate).IsRequired();
+                entity.Property(m => m.Status).IsRequired();
+                entity.Property(m => m.CreatedAt).IsRequired();
+                entity.Property(m => m.UpdatedAt).IsRequired(false);
+
+                entity.HasOne(m => m.Tournament)
+                    .WithMany(t => t.Matches)
+                    .HasForeignKey(m => m.TournamentId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(m => m.HomeTeam)
+                    .WithMany()
+                    .HasForeignKey(m => m.HomeTeamId)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+                entity.HasOne(m => m.AwayTeam)
+                    .WithMany()
+                    .HasForeignKey(m => m.AwayTeamId)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+                entity.HasOne(m => m.Referee)
+                    .WithMany()
+                    .HasForeignKey(m => m.RefereeId)
+                    .OnDelete(DeleteBehavior.NoAction);
+            });
+
         });
 
     }
