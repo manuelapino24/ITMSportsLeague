@@ -32,6 +32,7 @@ builder.Services.AddScoped<IRefereeService, RefereeService>();
 builder.Services.AddScoped<ITournamentService, TournamentService>();
 builder.Services.AddScoped<IMatchEventService, MatchEventService>();
 builder.Services.AddScoped<MatchValidationHelper>();
+builder.Services.AddScoped<IStandingsService, StandingsService>();
 
 // ── Sponsor ──
 builder.Services.AddScoped<ISponsorRepository, SponsorRepository>();
